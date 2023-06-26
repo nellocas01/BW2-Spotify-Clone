@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html class="bg-black" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Spotify - Album</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="assets/css/album.css" />
+    <link rel="stylesheet" href="assets/css/circular-font.css" />
+    <link rel="icon" type="image/x-icon" href="assets/imgs/spotify.ico" />
+  </head>
+  <body>
+    <div class="container-fluid d-flex p-0 bg-black">
+      <aside id="aside-sx" class="d-flex flex-column align-items-start bg-black">
+        <button class="btn rounded-pill fw-bold text-light d-none d-md-block">
+          <i class="bi bi-three-dots text-light fs-3"></i>
+        </button>
+        <div class="d-flex align-items-center gap-2 ps-3 flex-column flex-md-row">
+          <a href="index.html"
+            ><svg
+              role="img"
+              height="24"
+              width="24"
+              aria-hidden="true"
+              class="Svg-sc-ytk21e-0 gQUQL home-active-icon"
+              viewBox="0 0 24 24"
+              data-encore-id="icon"
+            >
+              <path
+                d="M13.5 1.515a3 3 0 0 0-3 0L3 5.845a2 2 0 0 0-1 1.732V21a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6h4v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V7.577a2 2 0 0 0-1-1.732l-7.5-4.33z"
+              ></path></svg
+          ></a>
+          <a href="index.html" class="text-decoration-none text-light">Home</a>
+        </div>
+        <button
+          onclick="apriCerca()"
+          id="showinput"
+          type="button"
+          class="btn border-0 d-flex align-items-center gap-2 ps-3 flex-column flex-md-row py-0"
+        >
+          <span><i class="bi bi-search fs-4 text-decoration-none text-light"></i></span>
+          <span class="text-decoration-none text-light">Cerca</span>
+        </button>
+        <div class="d-flex align-items-center gap-2 ps-0 ps-md-3 pb-5 flex-column flex-md-row">
+          <a href="#"
+            ><svg
+              role="img"
+              height="24"
+              width="24"
+              aria-hidden="true"
+              class="Svg-sc-ytk21e-0 gQUQL collection-icon"
+              viewBox="0 0 24 24"
+              data-encore-id="icon"
+              fill="rgba(255, 255, 255, 0.733)"
+            >
+              <path
+                d="M14.5 2.134a1 1 0 0 1 1 0l6 3.464a1 1 0 0 1 .5.866V21a1 1 0 0 1-1 1h-6a1 1 0 0 1-1-1V3a1 1 0 0 1 .5-.866zM16 4.732V20h4V7.041l-4-2.309zM3 22a1 1 0 0 1-1-1V3a1 1 0 0 1 2 0v18a1 1 0 0 1-1 1zm6 0a1 1 0 0 1-1-1V3a1 1 0 0 1 2 0v18a1 1 0 0 1-1 1z"
+              ></path></svg
+          ></a>
+          <a href="#" class="text-decoration-none text-light">La tua Libreria</a>
+        </div>
+        <div class="d-none d-md-flex align-items-center gap-2 ps-0 ps-md-3 flex-column flex-md-row">
+          <a href="#"><i class="bi bi-plus-square-fill fs-4 text-decoration-none text-light"></i></a>
+          <a href="#" class="text-decoration-none text-light">Crea playlist</a>
+        </div>
+        <div class="d-none d-md-flex align-items-center gap-2 ps-0 ps-md-3 flex-column flex-md-row">
+          <div class="likedBg">
+            <a href="#"><i class="bi bi-suit-heart-fill fs-6 py-2 px-1 text-decoration-none text-light"></i></a>
+          </div>
+          <a href="#" class="text-decoration-none text-light" style="padding-left: 32px; margin-bottom: 5px"
+            >Brani che ti piacciono</a
+          >
+        </div>
+        <div class="d-none d-md-flex align-items-center gap-2 ps-0 ps-md-3 flex-column flex-md-row">
+          <div class="episodeBg">
+            <a href="#"><i class="bi bi-bookmark-fill fs-6 text-decoration-none text-light py-2 px-1"></i></a>
+          </div>
+          <a href="#" class="text-decoration-none text-light" style="padding-left: 33px">I tuoi episodi</a>
+        </div>
+
+        <hr class="border border-light opacity-25 d-none d-md-flex" style="width: 83%; margin-left: 15px" />
+
+        <div id="playlists" class="mt-2 d-none d-md-block">
+          <div class="d-flex align-items-center gap-2 ps-3 pb-2 d-none d-md-block">
+            <span>early stage emily syndrome (sett-ott 2022)</span>
+          </div>
+          <div class="d-flex align-items-center gap-2 ps-3 pb-2 d-none d-md-block">
+            <span>Be The Young</span>
+          </div>
+          <div class="d-flex align-items-center gap-2 ps-3 pb-2 d-none d-md-block">
+            <span>saggio vibes 💃🩰</span>
+          </div>
+          <div class="d-flex align-items-center gap-2 ps-3 pb-2 d-none d-md-block">
+            <span>main character energy (mag-giu 2022)</span>
+          </div>
+          <div class="d-flex align-items-center gap-2 ps-3 pb-2 d-none d-md-block">
+            <span>that fucking mood 🔪💀</span>
+          </div>
+        </div>
+      </aside>
+      <main class="container-fluid px-0">
+        <nav class="navbar position-fixed">
+          <div class="container-fluid justify-content-start px-3">
+            <a style="background-color: #131313; margin-right: 8px" class="text-light rounded-circle fs-3 px-2" href="#"
+              ><i class="bi bi-arrow-left-short"></i
+            ></a>
+            <a style="background-color: #131313" class="text-light rounded-circle fs-3 px-2" href="#"
+              ><i class="bi bi-arrow-right-short"></i
+            ></a>
+          </div>
+        </nav>
+        <div id="albumInfo" class="container-fluid">
+          <div class="row">
+            <div class="col-12 col-lg-6 align-self-center pb-3 pb-lg-0">
+              <img
+                style="min-height: 200px; min-width: 200px"
+                id="cover"
+                class="img-fluid"
+                src="https://m.media-amazon.com/images/I/51pZ2ah+f8L.jpg"
+                alt="Album cover"
+              />
+            </div>
+            <div class="col-9 col-lg-5 text-white d-flex flex-column justify-content-end align-self-center">
+              <h3 id="type" class="small fw-semibold m-0">ALBUM</h3>
+              <h2 id="titolo-card" class="display-1 fw-bold mb-4">Gioventù brucata</h2>
+              <div>
+                <img
+                  class="img-fluid rounded-circle"
+                  src="https://i.scdn.co/image/ab6761610000f178d5d878bd4d4fe8426fcb442d"
+                  alt="Band picture"
+                  width="24px"
+                />
+                <small class="fw-bold">Pinguini Tattici Nucleari &bull; 2017 &bull; 12 brani,</small>
+                <small>53 min 20 sec.</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="albumContentWrapper">
+          <div id="albumContent" class="container-fluid py-4 px-4 text-white mt-0">
+            <div class="mb-2">
+              <button id="playBtn" class="p-2 rounded-circle me-4">
+                <svg
+                  role="img"
+                  height="28"
+                  width="28"
+                  aria-hidden="true"
+                  viewBox="0 0 24 24"
+                  data-encore-id="icon"
+                  class="Svg-sc-ytk21e-0 uPxdw"
+                >
+                  <path
+                    d="m7.05 3.606 13.49 7.788a.7.7 0 0 1 0 1.212L7.05 20.394A.7.7 0 0 1 6 19.788V4.212a.7.7 0 0 1 1.05-.606z"
+                  ></path>
+                </svg>
+              </button>
+              <button id="favBtn" class="p-2 rounded-circle me-1">
+                <svg
+                  role="img"
+                  height="32"
+                  width="32"
+                  aria-hidden="true"
+                  viewBox="0 0 24 24"
+                  data-encore-id="icon"
+                  class="Svg-sc-ytk21e-0 uPxdw"
+                >
+                  <path
+                    d="M5.21 1.57a6.757 6.757 0 0 1 6.708 1.545.124.124 0 0 0 .165 0 6.741 6.741 0 0 1 5.715-1.78l.004.001a6.802 6.802 0 0 1 5.571 5.376v.003a6.689 6.689 0 0 1-1.49 5.655l-7.954 9.48a2.518 2.518 0 0 1-3.857 0L2.12 12.37A6.683 6.683 0 0 1 .627 6.714 6.757 6.757 0 0 1 5.21 1.57zm3.12 1.803a4.757 4.757 0 0 0-5.74 3.725l-.001.002a4.684 4.684 0 0 0 1.049 3.969l.009.01 7.958 9.485a.518.518 0 0 0 .79 0l7.968-9.495a4.688 4.688 0 0 0 1.049-3.965 4.803 4.803 0 0 0-3.931-3.794 4.74 4.74 0 0 0-4.023 1.256l-.008.008a2.123 2.123 0 0 1-2.9 0l-.007-.007a4.757 4.757 0 0 0-2.214-1.194z"
+                  ></path>
+                </svg>
+              </button>
+              <button id="downloadBtn" class="p-2 rounded-circle me-1">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  class="bi bi-arrow-down-circle"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"
+                  />
+                </svg>
+              </button>
+              <button id="moreBtn" class="p-2 rounded-circle me-1 d-none d-lg-inline-block">
+                <svg
+                  role="img"
+                  height="32"
+                  width="32"
+                  aria-hidden="true"
+                  viewBox="0 0 24 24"
+                  data-encore-id="icon"
+                  class="Svg-sc-ytk21e-0 uPxdw"
+                >
+                  <path
+                    d="M4.5 13.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm15 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm-7.5 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"
+                  ></path>
+                </svg>
+              </button>
+              <button id="moreBtn" class="p-2 rounded-circle me-1 d-inline-block d-lg-none">
+                <svg
+                  role="img"
+                  height="32"
+                  width="32"
+                  aria-hidden="true"
+                  viewBox="0 0 24 24"
+                  data-encore-id="icon"
+                  class="Svg-sc-ytk21e-0 gQUQL"
+                >
+                  <path
+                    d="M10.5 4.5a1.5 1.5 0 1 0 3 0 1.5 1.5 0 0 0-3 0zm0 15a1.5 1.5 0 1 0 3 0 1.5 1.5 0 0 0-3 0zm0-7.5a1.5 1.5 0 1 0 3 0 1.5 1.5 0 0 0-3 0z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+            <div class="row mb-1 mt-4 light-gray d-none d-lg-flex">
+              <div class="col-1 fw-semibold songNumber">#</div>
+              <div class="col-4 fw-semibold">TITOLO</div>
+              <div class="col-3 text-end fw-semibold">RIPRODUZIONI</div>
+              <div class="col-3 text-end">
+                <svg
+                  id="clockIcon"
+                  role="img"
+                  height="16"
+                  width="16"
+                  aria-hidden="true"
+                  viewBox="0 0 16 16"
+                  data-encore-id="icon"
+                  class="Svg-sc-ytk21e-0 uPxdw"
+                >
+                  <path d="M8 1.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"></path>
+                  <path d="M8 3.25a.75.75 0 0 1 .75.75v3.25H11a.75.75 0 0 1 0 1.5H7.25V4A.75.75 0 0 1 8 3.25z"></path>
+                </svg>
+              </div>
+            </div>
+            <hr />
+            <div id="row-canzoni" class="container-fluid px-0">
+              <div class="row mb-2 justify-content-between justify-content-lg-start">
+                <div class="col-1 songNumber d-none d-lg-block">1</div>
+                <div class="col-4">
+                  <h3 class="fs-6 fw-bold mb-0">Lorem ipsum</h3>
+                  <small class="light-gray">Dolor sit amet</small>
+                </div>
+                <div class="col-3 text-end light-gray d-none d-lg-block">3.694.578</div>
+                <div class="col-3 text-end light-gray d-none d-lg-block">2:23</div>
+                <div class="col-3 text-end light-gray d-block d-lg-none"><i class="bi bi-three-dots-vertical"></i></div>
+              </div>
+              <div class="row mb-2 justify-content-between justify-content-lg-start">
+                <div class="col-1 songNumber d-none d-lg-block">2</div>
+                <div class="col-4">
+                  <h3 class="fs-6 fw-bold mb-0">Lorem ipsum</h3>
+                  <small class="light-gray">Dolor sit amet</small>
+                </div>
+                <div class="col-3 text-end light-gray d-none d-lg-block">543.278</div>
+                <div class="col-3 text-end light-gray d-none d-lg-block">4:18</div>
+                <div class="col-3 text-end light-gray d-block d-lg-none"><i class="bi bi-three-dots-vertical"></i></div>
+              </div>
+              <div class="row mb-2 justify-content-between justify-content-lg-start">
+                <div class="col-1 songNumber d-none d-lg-block">3</div>
+                <div class="col-4">
+                  <h3 class="fs-6 fw-bold mb-0">Lorem ipsum</h3>
+                  <small class="light-gray">Dolor sit amet</small>
+                </div>
+                <div class="col-3 text-end light-gray d-none d-lg-block">234.578</div>
+                <div class="col-3 text-end light-gray d-none d-lg-block">1:28</div>
+                <div class="col-3 text-end light-gray d-block d-lg-none"><i class="bi bi-three-dots-vertical"></i></div>
+              </div>
+              <div class="row mb-2 justify-content-between justify-content-lg-start">
+                <div class="col-1 songNumber d-none d-lg-block">4</div>
+                <div class="col-4">
+                  <h3 class="fs-6 fw-bold mb-0">Lorem ipsum</h3>
+                  <small class="light-gray">Dolor sit amet</small>
+                </div>
+                <div class="col-3 text-end light-gray d-none d-lg-block">100.378</div>
+                <div class="col-3 text-end light-gray d-none d-lg-block">1:08</div>
+                <div class="col-3 text-end light-gray d-block d-lg-none"><i class="bi bi-three-dots-vertical"></i></div>
+              </div>
+              <div class="row mb-2 justify-content-between justify-content-lg-start">
+                <div class="col-1 songNumber d-none d-lg-block">5</div>
+                <div class="col-4">
+                  <h3 class="fs-6 fw-bold mb-0">Lorem ipsum</h3>
+                  <small class="light-gray">Dolor sit amet</small>
+                </div>
+                <div class="col-3 text-end light-gray light-gray d-none d-lg-block">123.223</div>
+                <div class="col-3 text-end light-gray light-gray d-none d-lg-block">2:38</div>
+                <div class="col-3 text-end light-gray d-block d-lg-none"><i class="bi bi-three-dots-vertical"></i></div>
+              </div>
+              <div class="row mb-2 justify-content-between justify-content-lg-start">
+                <div class="col-1 songNumber d-none d-lg-block">6</div>
+                <div class="col-4">
+                  <h3 class="fs-6 fw-bold mb-0">Lorem ipsum</h3>
+                  <small class="light-gray">Dolor sit amet</small>
+                </div>
+                <div class="col-3 text-end light-gray d-none d-lg-block">634.586</div>
+                <div class="col-3 text-end light-gray d-none d-lg-block">1:22</div>
+                <div class="col-3 text-end light-gray d-block d-lg-none"><i class="bi bi-three-dots-vertical"></i></div>
+              </div>
+              <div class="row mb-2 justify-content-between justify-content-lg-start">
+                <div class="col-1 songNumber d-none d-lg-block">7</div>
+                <div class="col-4">
+                  <h3 class="fs-6 fw-bold mb-0">Lorem ipsum</h3>
+                  <small class="light-gray">Dolor sit amet</small>
+                </div>
+                <div class="col-3 text-end light-gray d-none d-lg-block">454.278</div>
+                <div class="col-3 text-end light-gray d-none d-lg-block">1:25</div>
+                <div class="col-3 text-end light-gray d-block d-lg-none"><i class="bi bi-three-dots-vertical"></i></div>
+              </div>
+              <div class="row mb-2 justify-content-between justify-content-lg-start">
+                <div class="col-1 songNumber d-none d-lg-block">8</div>
+                <div class="col-4">
+                  <h3 class="fs-6 fw-bold mb-0">Lorem ipsum</h3>
+                  <small class="light-gray">Dolor sit amet</small>
+                </div>
+                <div class="col-3 text-end light-gray d-none d-lg-block">643.342</div>
+                <div class="col-3 text-end light-gray d-none d-lg-block">1:22</div>
+                <div class="col-3 text-end light-gray d-block d-lg-none"><i class="bi bi-three-dots-vertical"></i></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+      <aside
+        class="d-none d-lg-block bg-black"
+        style="height: 100%; width: 240px; position: fixed; z-index: 1; top: 0; right: 0"
+      >
+        <div class="d-flex align-items-center justify-content-between px-3 py-3 pb-5 text-light">
+          <p>Attività amici</p>
+          <p>
+            <i class="bi bi-people-fill"></i>
+            <a class="text-decoration-none text-light" href="#"><i class="bi bi-x"></i></a>
+          </p>
+        </div>
+        <div class="">
+          <div class="d-flex align-items-start mb-5">
+            <img src="assets/imgs/main/image-19.jpg" alt="rand-img" height="40px" class="rounded-circle mr-1" />
+            <div class="d-block mx-1">
+              <h6 class="text-white mb-1" style="font-size: 0.8rem">Charlie Hookham</h6>
+              <p class="text-white my-0" style="font-size: 0.6rem">In Camera<i class="bi bi-dot"></i> Yumi Zouma</p>
+              <i class="bi bi-0-circle text-white" style="font-size: 0.8rem"> EP III</i>
+            </div>
+            <p class="text-white" style="font-size: 0.7rem">4 ore</p>
+          </div>
+          <div class="d-flex align-items-start mb-5">
+            <img src="assets/imgs/main/image-19.jpg" alt="rand-img" height="40px" class="rounded-circle mr-1" />
+            <div class="d-block mx-1">
+              <h6 class="text-white mb-1" style="font-size: 0.8rem">lightdark02</h6>
+              <p class="text-white my-0" style="font-size: 0.6rem">Aimed to Kill<i class="bi bi-dot"></i> Jade LeMac</p>
+              <i class="bi bi-0-circle text-white" style="font-size: 0.8rem"> Aimed to Kill</i>
+            </div>
+            <p class="text-white" style="font-size: 0.7rem">8 ore</p>
+          </div>
+          <div class="d-flex align-items-start mb-5">
+            <img src="assets/imgs/main/image-19.jpg" alt="rand-img" height="40px" class="rounded-circle mr-1" />
+            <div class="d-block mx-1">
+              <h6 class="text-white mb-1" style="font-size: 0.8rem">Valeria Traverso</h6>
+              <p class="text-white my-0" style="font-size: 0.6rem">New Kings<i class="bi bi-dot"></i> Sleeping Wolf</p>
+              <i class="bi bi-music-note-beamed text-white" style="font-size: 0.7rem"> Twint Badass mood</i>
+            </div>
+            <p class="text-white" style="font-size: 0.6rem">3 giorni</p>
+          </div>
+        </div>
+      </aside>
+      <div
+        id="player"
+        style="bottom: 0; left: 0; right: 0; z-index: 99999"
+        class="container-fluid position-fixed bg-dark py-3 px-4"
+      >
+        <div class="row align-items-center justify-content-center justify-content-md-between">
+          <div style="opacity: 0" id="cardPlayer" class="col-2 d-none d-md-block">
+            <div class="card bg-dark border-0">
+              <div class="row g-0">
+                <div class="col-4 col-md-4">
+                  <img
+                    src="assets/imgs/main/image-2.jpg"
+                    style="min-height: 60px; min-width: 60px"
+                    class="img-fluid rounded-0"
+                    alt="pic"
+                  />
+                </div>
+                <div class="col-8 col-md-8">
+                  <div class="card-body">
+                    <h6 id="titoloPlayer" class="card-title text-light text-truncate">
+                      <a class="text-decoration-none text-light" href="#"
+                        >TitoloTitoloTitoloTitoloTitoloTitoloTitoloTitoloTitoloTitolo</a
+                      >
+                    </h6>
+                    <p id="artistaPlayer" class="card-text">
+                      <a class="text-decoration-none text-light text-nowrap" href="#">artista</a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-5">
+            <div class="container-fluid d-flex flex-md-column">
+              <div class="align-self-center mb-4">
+                <button type="button" class="btn border-0 rounded-circle d-none d-md-inline-block">
+                  <i class="bi bi-shuffle text-light fs-4 iconePlayer"></i>
+                </button>
+                <button type="button" class="btn border-0 rounded-circle d-none d-md-inline-block">
+                  <i class="bi bi-skip-start-fill text-light fs-4 iconePlayer"></i>
+                </button>
+                <div class="d-md-inline-block d-flex align-items-center">
+                  <span class="text-truncate" style="flex-basis: 130px">
+                    <a
+                      style="vertical-align: middle; opacity: 0"
+                      class="title-player text-decoration-none text-light d-md-none fs-4"
+                      href="#"
+                      >Lorem ipsum dolor sit amet consectetur
+                    </a>
+                  </span>
+
+                  <button class="btn playerPlay d-md-none">
+                    <svg
+                      role="presentation"
+                      height="32"
+                      width="32"
+                      aria-hidden="true"
+                      class="Svg-sc-ytk21e-0 gQUQL"
+                      viewBox="0 0 16 16"
+                      data-encore-id="icon"
+                      fill="white"
+                    >
+                      <path
+                        d="M6 2.75C6 1.784 6.784 1 7.75 1h6.5c.966 0 1.75.784 1.75 1.75v10.5A1.75 1.75 0 0 1 14.25 15h-6.5A1.75 1.75 0 0 1 6 13.25V2.75zm1.75-.25a.25.25 0 0 0-.25.25v10.5c0 .138.112.25.25.25h6.5a.25.25 0 0 0 .25-.25V2.75a.25.25 0 0 0-.25-.25h-6.5zm-6 0a.25.25 0 0 0-.25.25v6.5c0 .138.112.25.25.25H4V11H1.75A1.75 1.75 0 0 1 0 9.25v-6.5C0 1.784.784 1 1.75 1H4v1.5H1.75zM4 15H2v-1.5h2V15z"
+                      ></path>
+                      <path d="M13 10a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm-1-5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
+                    </svg>
+                  </button>
+                  <button class="btn playerPlay d-md-none">
+                    <i class="bi bi-heart text-light fs-4 iconaCuore"></i>
+                  </button>
+
+                  <button type="button" class="btn btn-secondary bg-white rounded-circle playerPlay">
+                    <i class="bi bi-play-fill text-dark fs-4 iconaPlay"></i>
+                  </button>
+                </div>
+                <button type="button" class="btn border-0 rounded-circle d-none d-md-inline-block">
+                  <i class="bi bi-skip-end-fill text-light fs-4 iconePlayer"></i>
+                </button>
+                <button type="button" class="btn border-0 rounded-circle d-none d-md-inline-block">
+                  <i class="bi bi-repeat text-light fs-4 iconePlayer"></i>
+                </button>
+              </div>
+              <div>
+                <div
+                  class="progress"
+                  role="progressbar"
+                  aria-label="Example 1px high"
+                  aria-valuenow="25"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  style="height: 3px"
+                >
+                  <div class="progress-bar" style="width: 0%; background-color: #1db954 !important"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-2 d-none d-md-block">
+            <div class="container-fluid d-flex align-items-center">
+              <button type="button" class="btn border-0 rounded-circle">
+                <i id="icona-volume" class="bi bi-volume-down text-light fs-2 iconePlayer"></i>
+              </button>
+              <input type="range" class="form-range" id="customRange1" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+    <script src="assets/script/album.js"></script>
+  </body>
+</html>
