@@ -1,0 +1,65 @@
+#aside-sx {
+  height: 100%;
+  width: 300px;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  padding-top: 5px;
+}
+
+@media screen and (max-width: 769px) {
+  main {
+    margin-left: 0 !important;
+  }
+  #albumContentWrapper {
+    padding-bottom: 50px !important;
+  }
+  nav {
+    left: 0;
+  }
+  #aside-sx {
+    flex-direction: row !important;
+    justify-content: space-around;
+    height: auto;
+    width: 100%;
+    top: auto;
+    bottom: -35px;
+    background-color: #131313de !important;
+  }
+  #player {
+    bottom: 85px !important;
+    right: -10px !important;
+    left: -10px !important;
+    width: 100% !important;
+    height: 100px;
+    padding-bottom: 6.5rem;
+    background-color: #131313de !important;
+    border-radius: 20px !important;
+  }
+}
+
+#aside-sx button,
+#aside-sx i,
+#aside-sx a,
+#aside-sx span,
+#card-principale #dots {
+  color: rgba(255, 255, 255, 0.733) !important;
+
+  transition: color 0.2s ease-in-out;
+}
+
+#aside-sx svg {
+  fill: rgba(255, 255, 255, 0.733) !important;
+  transition: fill 0.2s ease-in-out;
+}
+
+#aside-sx button:hover,
+#aside-sx a:hover,
+#aside-sx i:hover,
+#aside-sx span:hover,
+#card-principale #dots:hover,
+#aside-sx svg:hover {
+  color: white !important;
+  fill: white !important;
+}
