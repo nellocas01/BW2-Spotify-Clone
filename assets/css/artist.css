@@ -48,10 +48,10 @@ nav {
 }
 
 #artistBanner {
-  background-image: url("https://media.timeout.com/images/103733283/750/422/image.jpg");
   background-repeat: no-repeat;
-  background-size: cover;
+  border-radius: 8px;
   padding-top: 20rem;
+  background-size: contain;
 }
 
 #verifiedIcon {

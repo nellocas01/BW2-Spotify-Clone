@@ -51,8 +51,10 @@ window.onload = async () => {
     renderArtist(artist);
     console.log(artist);
 
-    // const top = await getArtistTopTracks(artistId);
-    // renderTopTracks(top.data || []);
+    const top = await getArtistTopTracks(artistId);
+    renderTopTracks(top?.data || []);
+    console.log(top);
+    
   } catch (err) {
     console.error("Errore caricamento artista o tracce:", err);
   }

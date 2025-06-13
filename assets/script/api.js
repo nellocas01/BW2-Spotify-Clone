@@ -35,6 +35,14 @@ export async function getArtistById(artistId) {
 }
 
 /**
+ * Ottiene i dati di un artista
+ * @param {string|number} artistId
+ */
+export async function getArtistTopTracks(artistId) {
+  return fetchData(`${API_BASE}/artist/${artistId}/top?limit=50`);
+}
+
+/**
  * Effettua una ricerca
  * @param {string} query - Testo da cercare
  */

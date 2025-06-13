@@ -81,10 +81,6 @@ export const createSongAlbum = (
   };
 };
 
-export const apriCerca = () => {
-  window.location.href = "index.html?form=1";
-};
-
 export const creaCardPlayer = (img, title, artist, idArtist, preview) => {
   const col = document.querySelector("#cardPlayer");
   col.style.opacity = "1";
@@ -130,7 +126,9 @@ export const creaCardPlayer = (img, title, artist, idArtist, preview) => {
 export const createCardArtist = (artist, img, ascoltatori) => {
   const card = document.querySelector("#artistBanner");
   card.style.backgroundImage = `url("${img}")`;
-  card.innerHTML = `<div class="d-flex">
+
+  const content = document.querySelector("#artistCardContent");
+  content.innerHTML = `<div class="d-flex align-items-center">
   <div class="position-relative">
     <svg
       id="verifiedIcon"
@@ -152,7 +150,9 @@ export const createCardArtist = (artist, img, ascoltatori) => {
   <p class="text-white px-2 my-0">Artista Verificato</p>
 </div>
 <h1 class="text-white fw-bold" style="font-size: 4rem">${artist}</h1>
-<p class="text-white">${ascoltatori} ascoltatori mensili</p>`;
+<p class="text-white">${ascoltatori} ascoltatori mensili</p>
+</div>
+`;
 };
 
 // let i = 1;

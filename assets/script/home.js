@@ -13,7 +13,7 @@ async function fetchCardPrincipale(query = "geolier") {
 
     console.log("Dati ricevuti (principale):", data);
 
-    const track = data.data[7]; // solo il primo brano
+    const track = data.data[0]; // solo il primo brano
     cardPrincipale.innerHTML = `
         <div class="row g-0">
           <div class="col-2">
@@ -25,12 +25,15 @@ async function fetchCardPrincipale(query = "geolier") {
           </div>
           <div class="col-6">
             <div class="card-body">
-              <h6 class="card-title fw-bold">ALBUM</h6>
               <h1 class="card-title fw-bold">${track.title}</h1>
+              <a class="text-info text-decoration-none" href="artist.html?id=${track.artist.id}">
               <p class="card-text fw-bold">${track.artist.name}</p>
+              </a>
+              <a class="text-info text-decoration-none" href="artist.html?id=${track.artist.id}">
               <p class="card-text fw-bold">
                 Ascolta il nuovo singolo di ${track.artist.name}!
               </p>
+              </a>
               <div class="d-flex gap-2">
                 <button
                   style="background-color: #1ed760"
@@ -73,7 +76,7 @@ async function fetchCardPlaylist(query = "geolier") {
 
     console.log("Dati ricevuti:", data);
 
-    const songs = data.data.slice(0, 6);
+    const songs = data.data.slice(1, 7);
     cardPlaylist.innerHTML = "";
 
     songs.forEach((track) => {
@@ -122,7 +125,7 @@ async function fetchCards2(query = "Salmo") {
     const response = await fetch(`${url}=${query}`);
 
     const data = await response.json();
-    const tracks = data.data.slice(0, 5); // primi 5 brani
+    const tracks = data.data.slice(0, 4); // primi 4 brani
 
     const container = document.getElementById("cards2");
     container.innerHTML = ""; // pulizia iniziale
@@ -169,7 +172,7 @@ async function fetchRecenti(query = "eminem") {
     const response = await fetch(`${url}=${query}`);
 
     const data = await response.json();
-    const tracks = data.data.slice(0, 5); // primi 5 brani
+    const tracks = data.data.slice(0, 4); // primi 4 brani
 
     const container = document.getElementById("recenti");
     container.innerHTML = ""; // pulizia iniziale
