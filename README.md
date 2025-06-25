@@ -17,6 +17,7 @@ Questo progetto è una riproduzione parziale di Spotify realizzata con HTML, CSS
 
 ## ✅ Funzionalità implementate
 
+- All'avvio bisogna scegliere 3 artisti che saranno renderizzati coi loro dati tramite il form.
 - Homepage con lista di album popolata dinamicamente tramite API.
 - Pagina album dinamica: carica i dati dell’album selezionato usando `URLSearchParams`.
 - Pagina artista dinamica: mostra le informazioni e tracce di un artista selezionato.
@@ -58,10 +59,10 @@ Questo progetto è una riproduzione parziale di Spotify realizzata con HTML, CSS
 │ ├── album.js
 │ ├── artist.js
 │ └── login.js
-├── index.html # Homepage
+├── home.html # Homepage
 ├── album.html # Pagina album dinamica
 ├── artist.html # Pagina artista dinamica
-└── login.html # (opzionale)
+└── home.html # Punto di accesso all'app
 
 
 ---

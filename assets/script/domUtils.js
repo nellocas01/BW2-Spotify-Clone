@@ -124,35 +124,43 @@ export const creaCardPlayer = (img, title, artist, idArtist, preview) => {
 
 // ************ARTIST************
 export const createCardArtist = (artist, img, ascoltatori) => {
-  const card = document.querySelector("#artistBanner");
-  card.style.backgroundImage = `url("${img}")`;
-
   const content = document.querySelector("#artistCardContent");
-  content.innerHTML = `<div class="d-flex align-items-center">
-  <div class="position-relative">
-    <svg
-      id="verifiedIcon"
-      role="img"
-      height="24"
-      width="24"
-      aria-hidden="true"
-      class="Svg-sc-ytk21e-0 kcjDTG b0NcxAbHvRbqgs2S8QDg position-relative z-2"
-      viewBox="0 0 24 24"
-      data-encore-id="icon"
-    >
-      <path
-        d="M10.814.5a1.658 1.658 0 0 1 2.372 0l2.512 2.572 3.595-.043a1.658 1.658 0 0 1 1.678 1.678l-.043 3.595 2.572 2.512c.667.65.667 1.722 0 2.372l-2.572 2.512.043 3.595a1.658 1.658 0 0 1-1.678 1.678l-3.595-.043-2.512 2.572a1.658 1.658 0 0 1-2.372 0l-2.512-2.572-3.595.043a1.658 1.658 0 0 1-1.678-1.678l.043-3.595L.5 13.186a1.658 1.658 0 0 1 0-2.372l2.572-2.512-.043-3.595a1.658 1.658 0 0 1 1.678-1.678l3.595.043L10.814.5zm6.584 9.12a1 1 0 0 0-1.414-1.413l-6.011 6.01-1.894-1.893a1 1 0 0 0-1.414 1.414l3.308 3.308 7.425-7.425z"
-      ></path>
-    </svg>
-    <span id="verifyBg"></span>
-  </div>
+  content.innerHTML = `<div class="row">
+    <div class="col-12 col-lg-6 align-self-center pb-3 pb-lg-0">
+      <img
+        style="min-height: 200px; min-width: 200px"
+        id="cover"
+        class="img-fluid"
+        src="${img}"
+        alt="${artist}"
+      />
+    </div>
+    <div class="col-9 col-lg-5 text-white d-flex flex-column justify-content-end align-self-center">
+    <div class="d-flex align-items-center">
+    <div class="position-relative">
+      <svg
+        id="verifiedIcon"
+        role="img"
+        height="24"
+        width="24"
+        aria-hidden="true"
+        class="Svg-sc-ytk21e-0 kcjDTG b0NcxAbHvRbqgs2S8QDg position-relative z-2"
+        viewBox="0 0 24 24"
+        data-encore-id="icon"
+      >
+        <path
+          d="M10.814.5a1.658 1.658 0 0 1 2.372 0l2.512 2.572 3.595-.043a1.658 1.658 0 0 1 1.678 1.678l-.043 3.595 2.572 2.512c.667.65.667 1.722 0 2.372l-2.572 2.512.043 3.595a1.658 1.658 0 0 1-1.678 1.678l-3.595-.043-2.512 2.572a1.658 1.658 0 0 1-2.372 0l-2.512-2.572-3.595.043a1.658 1.658 0 0 1-1.678-1.678l.043-3.595L.5 13.186a1.658 1.658 0 0 1 0-2.372l2.572-2.512-.043-3.595a1.658 1.658 0 0 1 1.678-1.678l3.595.043L10.814.5zm6.584 9.12a1 1 0 0 0-1.414-1.413l-6.011 6.01-1.894-1.893a1 1 0 0 0-1.414 1.414l3.308 3.308 7.425-7.425z"
+        ></path>
+      </svg>
+      <span id="verifyBg"></span>
+    </div>
 
-  <p class="text-white px-2 my-0">Artista Verificato</p>
-</div>
-<h1 class="text-white fw-bold" style="font-size: 4rem">${artist}</h1>
-<p class="text-white">${ascoltatori} ascoltatori mensili</p>
-</div>
-`;
+    <p class="text-white px-2 my-0">Artista Verificato</p>
+  </div>
+      <h1 class="text-white fw-bold" style="font-size: 4rem">${artist}</h1>
+      <p class="text-white">${ascoltatori} ascoltatori mensili</p>
+    </div>
+  </div>`;
 };
 
 // let i = 1;

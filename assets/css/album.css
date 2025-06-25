@@ -1,6 +1,10 @@
 main {
   background: #212529;
-  background: linear-gradient(0deg, rgba(33, 37, 41, 0) 55%, rgba(230, 198, 82, 1) 100%);
+  background: linear-gradient(
+    0deg,
+    rgba(33, 37, 41, 0) 55%,
+    rgba(230, 198, 82, 1) 100%
+  );
 }
 
 #albumInfo {
@@ -174,6 +178,11 @@ nav {
 #artistaPlayer a:hover,
 #titoloPlayer a:hover {
   text-decoration: underline !important;
+}
+#artistCardContent {
+  padding-bottom: 2rem;
+  padding-inline: 2rem;
+  padding-top: 4rem;
 }
 
 #riga {

@@ -1,9 +1,23 @@
+import { creaCardPlayer } from "./domUtils.js";
+import { bindHoverEventsToTracks } from "./events.js";
+import {
+  bindAudioEvents,
+  getAudioElement,
+  togglePlayPause,
+  updateVolumeIcon,
+} from "./player.js";
+
 const url = "https://striveschool-api.herokuapp.com/api/deezer/search?q";
 
 const cardPrincipale = document.getElementById("card-principale");
 const spinner = document.getElementById("spinner");
 
-async function fetchCardPrincipale(query = "geolier") {
+function getUserQuery(query, fallback) {
+  return localStorage.getItem(query) || fallback;
+}
+
+async function fetchCardPrincipale() {
+  const query = getUserQuery("userQuery1", "geolier");
   try {
     // Mostra lo spinner
     spinner.classList.remove("d-none");
@@ -29,13 +43,14 @@ async function fetchCardPrincipale(query = "geolier") {
               <a class="text-info text-decoration-none" href="artist.html?id=${track.artist.id}">
               <p class="card-text fw-bold">${track.artist.name}</p>
               </a>
-              <a class="text-info text-decoration-none" href="artist.html?id=${track.artist.id}">
+              <a class="text-info text-decoration-none" id="btn-play1" style="cursor: pointer">
               <p class="card-text fw-bold">
                 Ascolta il nuovo singolo di ${track.artist.name}!
               </p>
               </a>
               <div class="d-flex gap-2">
                 <button
+                  id="btn-play2"
                   style="background-color: #1ed760"
                   class="btn px-4 py-2 rounded-pill fw-bold"
                 >
@@ -55,6 +70,29 @@ async function fetchCardPrincipale(query = "geolier") {
           </div>
         </div>
       `;
+
+    const btnPlay1 = cardPrincipale.querySelector("#btn-play1");
+    const btnPlay2 = cardPrincipale.querySelector("#btn-play2");
+    btnPlay1.addEventListener("click", () => {
+      creaCardPlayer(
+        track.album.cover_medium,
+        track.album.title,
+        track.artist.name,
+        track.artist.id,
+        track.preview
+      );
+    });
+    btnPlay2.addEventListener("click", () => {
+      creaCardPlayer(
+        track.album.cover_medium,
+        track.album.title,
+        track.artist.name,
+        track.artist.id,
+        track.preview
+      );
+    });
+
+    bindHoverEventsToTracks();
   } catch (error) {
     console.error("Errore durante il caricamento:", error);
     cardPrincipale.innerHTML = `<p class="text-danger">Errore nel caricamento</p>`;
@@ -66,7 +104,8 @@ async function fetchCardPrincipale(query = "geolier") {
 
 const cardPlaylist = document.getElementById("card-playlist");
 
-async function fetchCardPlaylist(query = "geolier") {
+async function fetchCardPlaylist() {
+  const query = getUserQuery("userQuery1", "geolier");
   try {
     // Mostra lo spinner
     spinner.classList.remove("d-none");
@@ -107,6 +146,18 @@ async function fetchCardPlaylist(query = "geolier") {
       `;
 
       cardPlaylist.appendChild(card);
+
+      cardPlaylist.onclick = function () {
+        creaCardPlayer(
+          track.album.cover_medium,
+          track.album.title,
+          track.artist.name,
+          track.artist.id,
+          track.preview
+        );
+      };
+
+      bindHoverEventsToTracks();
     });
   } catch (error) {
     console.error("Errore durante il caricamento:", error);
@@ -117,7 +168,8 @@ async function fetchCardPlaylist(query = "geolier") {
   }
 }
 
-async function fetchCards2(query = "Salmo") {
+async function fetchCards2() {
+  const query = getUserQuery("userQuery2", "Salmo");
   try {
     // Mostra lo spinner
     spinner.classList.remove("d-none");
@@ -153,6 +205,11 @@ async function fetchCards2(query = "Salmo") {
             </div>
       `;
 
+      // evento click
+      col.firstElementChild.addEventListener("click", () => {
+        window.location.href = `album.html?id=${track.album.id}`;
+      });
+
       container.appendChild(col);
     });
   } catch (error) {
@@ -164,7 +221,8 @@ async function fetchCards2(query = "Salmo") {
   }
 }
 
-async function fetchRecenti(query = "eminem") {
+async function fetchRecenti() {
+  const query = getUserQuery("userQuery3", "eminem");
   try {
     // Mostra lo spinner
     spinner.classList.remove("d-none");
@@ -216,6 +274,26 @@ async function fetchRecenti(query = "eminem") {
     spinner.classList.add("d-none");
   }
 }
+
+// Gestione player UI
+document.querySelector(".form-range")?.addEventListener("input", (e) => {
+  updateVolumeIcon(e.target.value, document.querySelector("#icona-volume"));
+});
+
+document.querySelector("#icona-volume")?.addEventListener("click", () => {
+  getAudioElement().volume = 0;
+  document.querySelector("#icona-volume").className =
+    "bi bi-volume-mute text-light fs-2 iconePlayer";
+});
+
+document.querySelector(".iconaPlay")?.addEventListener("click", () => {
+  togglePlayPause(document.querySelector(".iconaPlay"));
+});
+
+bindAudioEvents(
+  document.querySelector(".progress-bar"),
+  document.querySelector(".iconaPlay")
+);
 
 fetchCardPrincipale();
 fetchCardPlaylist();
